@@ -43,8 +43,18 @@ export default function PayPayment() {
   const sendPayment = async () => {
     alert('Send Payment button works!'); // Debug: confirm button works
     console.log('sendPayment called'); // Debug: confirm function is called
-    
-    if (!walletClient || !recipient || !amount || !window.ethereum) return;
+
+    // Debug: Show which value is falsy
+    if (!walletClient || !recipient || !amount || !window.ethereum) {
+      alert(
+        `Missing:\n` +
+        `walletClient: ${!!walletClient}\n` +
+        `recipient: ${!!recipient}\n` +
+        `amount: ${!!amount}\n` +
+        `window.ethereum: ${!!window.ethereum}`
+      );
+      return;
+    }
     setSending(true);
     try {
         // Convert viem WalletClient to Ethers signer
