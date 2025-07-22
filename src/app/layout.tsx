@@ -34,9 +34,11 @@ export default function RootLayout({
         <Topbar />
         {/* Main Layout */}
         <div className="flex pt-14 min-h-screen">
-            <Sidebar />
+            <div className="hidden md:flex flex-col">
+              <Sidebar />
+            </div>
           {/* Content Area */}
-          <main className="flex-1 ml-64 p-8 overflow-y-auto h-[calc(100vh-3.5rem)] bg-gray-100">
+          <main className="md:flex-1 ml-0  md:ml-64 p-8 overflow-y-auto h-[calc(100vh-3.5rem)] bg-gray-100">
             {children}
           </main>
         </div>

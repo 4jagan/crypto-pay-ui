@@ -15,6 +15,7 @@ export default function PayPayment() {
   const { data: walletClient } = useWalletClient();
 
   const [recipient, setRecipient] = useState('');
+  const [sending, setSending] = useState(false);
   const [recipients, setRecipients] = useState<PaymentRecipient[]>([]);
   const [amount, setAmount] = useState('');
   const [txHash, setTxHash] = useState('');
@@ -33,7 +34,7 @@ export default function PayPayment() {
 
   const sendPayment = async () => {
     if (!walletClient || !recipient || !amount || !window.ethereum) return;
-
+    setSending(true);
     try {
         // Convert viem WalletClient to Ethers signer
         const provider = new BrowserProvider(window.ethereum);
@@ -60,6 +61,10 @@ export default function PayPayment() {
       } else {
         console.error('Transfer failed:', err);
       }
+    } finally {
+      setSending(false);
+      setAmount('');
+      setRecipient('');
     }
   };
 
@@ -86,7 +91,9 @@ export default function PayPayment() {
                 <label className="text-sm text-gray-600">Amount</label>
                 <input type="text" placeholder="Amount" className="border border-gray-300 p-2 rounded w-full" value={amount} onChange={(e) => setAmount(e.target.value)} />
             </div>
-            <button className="bg-blue-500 text-white px-4 py-2 mt-12 rounded-lg " onClick={sendPayment}>Pay in USDC</button>
+          <button className="bg-blue-500 text-white px-4 py-2 mt-12 rounded-lg " onClick={sendPayment} disabled={sending}>
+            {sending ? 'Sending...' : 'Pay in USDC'}
+          </button>
         </div>
       )}
 

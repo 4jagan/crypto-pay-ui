@@ -7,6 +7,7 @@ export default function Sidebar() {
         <SidebarItem icon="villa" label="Dashboard" href="/dashboard/overview" />
         <SidebarItem icon="wallet" label="Wallet" href="/wallet" />
         <SidebarItem icon="payment" label="Pay and Receive" href="/payment" />
+        <SidebarItem icon="payment" label="Pay" href="/pay" />
         <SidebarItem icon="chart" label="Monitor Transactions" href="/monitor" />
         <SidebarItem icon="bot" label="AI Reconcile & QB" href="/ai" />
         <SidebarItem icon="token" label="Tokens" href="/tokens" />
