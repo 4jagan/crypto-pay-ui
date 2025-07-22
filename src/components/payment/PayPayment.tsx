@@ -75,7 +75,7 @@ export default function PayPayment() {
       </div>
 
       {isConnected && (
-        <div className='flex flex-col gap-4 px-12 pt-6 border-t border-gray-200 bg-white'>
+        <div className='flex flex-col gap-4 px-4 pt-6 border-t border-gray-200 bg-white'>
             <div className="mb-4">
                 <label className="text-sm text-gray-600">Recipient</label>
                 <select className="border border-gray-300 p-2 rounded w-full" value={recipient} onChange={(e) => setRecipient(e.target.value)}>
@@ -91,7 +91,15 @@ export default function PayPayment() {
                 <label className="text-sm text-gray-600">Amount</label>
                 <input type="text" placeholder="Amount" className="border border-gray-300 p-2 rounded w-full" value={amount} onChange={(e) => setAmount(e.target.value)} />
             </div>
-          <button className="bg-blue-500 text-white px-4 py-2 mt-12 rounded-lg " onClick={sendPayment} disabled={sending}>
+          <button
+            className="bg-blue-500 text-white px-6 py-3 mt-6 rounded-lg w-full text-lg active:scale-95 transition cursor-pointer min-h-12 min-w-32 touch-manipulation focus:outline-blue-600"
+            onClick={sendPayment}
+            disabled={sending}
+            tabIndex={0}
+            role="button"
+            aria-disabled={sending}
+            style={{ touchAction: 'manipulation' }}
+          >
             {sending ? 'Sending...' : 'Pay in USDC'}
           </button>
         </div>

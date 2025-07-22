@@ -54,7 +54,7 @@ export default function PayPage() {
                         </div>
 
                         {/* Payments Content */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-red-100">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <PayAndReceive />
                         </div>
                     </div>
