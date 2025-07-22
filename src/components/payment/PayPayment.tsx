@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { parseUnits } from 'viem';
 import { useAccount, useWalletClient } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -19,6 +19,7 @@ export default function PayPayment() {
   const [recipients, setRecipients] = useState<PaymentRecipient[]>([]);
   const [amount, setAmount] = useState('');
   const [txHash, setTxHash] = useState('');
+  const payBtnRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
         async function fetchData() {
@@ -32,7 +33,15 @@ export default function PayPayment() {
         fetchData();
     },[]);
 
+  useEffect(() => {
+    if (payBtnRef.current) {
+      const rect = payBtnRef.current.getBoundingClientRect();
+      console.log('Pay button bounding rect:', rect);
+    }
+  }, [isConnected, recipients]);
+
   const sendPayment = async () => {
+    console.log('sendPayment called'); // Debug: confirm function is called
     if (!walletClient || !recipient || !amount || !window.ethereum) return;
     setSending(true);
     try {
@@ -70,6 +79,14 @@ export default function PayPayment() {
 
   return (
     <div className="flex flex-col gap-4 p-4 ">
+      {/* Test button to check if *any* button works on mobile */}
+      <button
+        type="button"
+        className="bg-gray-300 text-black px-4 py-2 rounded mb-2"
+        onClick={() => alert('Test button works!')}
+      >
+        Test Button
+      </button>
       <div className="p-4 flex justify-center items-center">
         <ConnectButton />
       </div>
@@ -92,16 +109,23 @@ export default function PayPayment() {
                 <input type="text" placeholder="Amount" className="border border-gray-300 p-2 rounded w-full" value={amount} onChange={(e) => setAmount(e.target.value)} />
             </div>
           <button
-            className="bg-blue-500 text-white px-6 py-3 mt-6 rounded-lg w-full text-lg active:scale-95 transition cursor-pointer min-h-12 min-w-32 touch-manipulation focus:outline-blue-600"
-            onClick={sendPayment}
+            ref={payBtnRef}
+            type="button"
+            className="bg-blue-500 text-white px-6 py-3 mt-6 rounded-lg w-full text-lg active:scale-95 transition cursor-pointer min-h-12 min-w-32 focus:outline-blue-600 z-10"
+            onClick={(e) => {
+              console.log('Button clicked ' + e); // Debug: confirm click event
+              sendPayment();
+            }}
             disabled={sending}
             tabIndex={0}
             role="button"
             aria-disabled={sending}
-            style={{ touchAction: 'manipulation' }}
           >
             {sending ? 'Sending...' : 'Pay in USDC'}
           </button>
+          {recipient === '' && (
+            <div className="text-red-500 text-sm mt-2">Please select a recipient.</div>
+          )}
         </div>
       )}
 
