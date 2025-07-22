@@ -41,7 +41,9 @@ export default function PayPayment() {
   }, [isConnected, recipients]);
 
   const sendPayment = async () => {
+    alert('Send Payment button works!'); // Debug: confirm button works
     console.log('sendPayment called'); // Debug: confirm function is called
+    
     if (!walletClient || !recipient || !amount || !window.ethereum) return;
     setSending(true);
     try {
@@ -83,7 +85,7 @@ export default function PayPayment() {
       <button
         type="button"
         className="bg-gray-300 text-black px-4 py-2 rounded mb-2"
-        onClick={() => alert('Test button works!')}
+        onClick={() => sendPayment()}
       >
         Test Button
       </button>
