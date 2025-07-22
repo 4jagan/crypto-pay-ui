@@ -1,6 +1,3 @@
-import ActiveAnomalies from "@/components/dashbord/risk/widgets/ActiveAnomalies";
-import { act } from "react";
-
 const mockDashboardData = {
   totalUSDCAssets: 16140000,
   totalAssets: 16140000,

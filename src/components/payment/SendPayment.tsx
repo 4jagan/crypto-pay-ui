@@ -1,12 +1,7 @@
 "use client";
-import useDashboardData from "@/app/api/dashboard/DashboardApi";
+import getDashboardData from "@/app/api/dashboard/DashboardApi";
 import mockDashboardData from "@/app/api/dashboard/mockDashboardData";
-import FormControl from "@mui/material/FormControl";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormLabel from "@mui/material/FormLabel";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import { BrowserProvider, Contract, parseUnits } from "ethers";
@@ -19,17 +14,16 @@ export default function SendPayment() {
     
     const [assets, setAssets] = useState<typeof mockDashboardData.assets[number][]>([]);
     const [recipients, setRecipients] = useState<typeof mockDashboardData.paymentRecipients[number][]>([]);
-    const [exchanges, setExchanges] = useState<typeof mockDashboardData.paymentExchanges[number][]>([]);
+    const [, setExchanges] = useState<typeof mockDashboardData.paymentExchanges[number][]>([]);
     
     const [recipient, setRecipient] = useState<string>("");
     const [fromWalletAddress, setFromWalletAddress] = useState<string | null>(null);
     const [amount, setAmount] = useState<string>("");
-    const [invoiceId, setInvoiceId] = useState<string>("");
     const [txHash, setTxHash] = useState<string | null>(null);
     
     useEffect(() => {
         async function fetchData() {
-            const data = await useDashboardData();
+            const data = await getDashboardData();
             setAssets(data.assets);
             setRecipients(data.paymentRecipients);
             setExchanges(data.paymentExchanges);
@@ -40,9 +34,9 @@ export default function SendPayment() {
         async function fetchWalletAddress() {
             const ethereum = window.ethereum;
             if (ethereum && ethereum.isMetaMask) {
-                const accounts = await ethereum.request({ method: 'eth_accounts' });
+                const accounts = await ethereum.request({ method: 'eth_accounts' }) as string[];
                 if (accounts.length > 0) {
-                    setFromWalletAddress(accounts[0]);
+                    setFromWalletAddress((accounts as string[])[0]);
                 } else {
                     console.warn("No accounts found. Please connect your wallet.");
                 }
@@ -57,7 +51,7 @@ export default function SendPayment() {
 
     const connectWallet = async () => {
         const accounts = await window.ethereum?.request({ method: "eth_requestAccounts" });
-        setFromWalletAddress(accounts[0]);
+        setFromWalletAddress((accounts as string[])[0]);
     };
 
     const sendPayment = async () => {

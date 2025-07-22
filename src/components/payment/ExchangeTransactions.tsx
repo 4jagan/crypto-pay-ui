@@ -1,5 +1,5 @@
 "use client";
-import useDashboardData from "@/app/api/dashboard/DashboardApi";
+import getDashboardData from "@/app/api/dashboard/DashboardApi";
 import { DashboardData } from "@/app/api/dashboard/mockDashboardData";
 import { useEffect, useState } from "react";
 
@@ -8,7 +8,7 @@ export default function ExchangeTransactions() {
     const [data, setData] = useState<DashboardData | null>(null);
     useEffect(() => {
         async function fetchData() {
-            const fetchedData = await useDashboardData();
+            const fetchedData = await getDashboardData();
             setData(fetchedData);
         }
         fetchData();

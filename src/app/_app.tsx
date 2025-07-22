@@ -11,7 +11,6 @@ import {
 import {
   WagmiProvider,
   http,
-  createConfig
 } from 'wagmi';
 
 import { sepolia } from 'wagmi/chains';

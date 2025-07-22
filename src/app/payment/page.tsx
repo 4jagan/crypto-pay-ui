@@ -1,7 +1,7 @@
 "use client";
 
 import PayAndReceive from "@/components/payment/PayAndReceive";
-import useDashboardData from "../api/dashboard/DashboardApi";
+import getDashboardData from "../api/dashboard/DashboardApi";
 import CachedOutlinedIcon from '@mui/icons-material/CachedOutlined';
 import RecentTransactions from "@/components/dashbord/overview/widgets/RecentTransactions";
 import ExchangeTransactions from "@/components/payment/ExchangeTransactions";
@@ -31,7 +31,7 @@ export default function PaymentsPage() {
     const [data, setData] = useState<DashboardData | null>(null);
     useEffect(() => {
         async function fetchData() {
-            const fetchedData = await useDashboardData();
+            const fetchedData = await getDashboardData();
             setData(fetchedData);
         }
         fetchData();
@@ -40,9 +40,6 @@ export default function PaymentsPage() {
     if (!data) {
         return <div className="p-4 text-gray-500">Loading...</div>;
     }
-    const { totalAssets, totalAssetsChange, activeWallets, supportedChains } = data;
-    const totalAssetsChangeDescription = (totalAssetsChange >= 0 ? `⬆ +${totalAssetsChange}` : `⬇ -${-totalAssetsChange}`) + ' from last month';
-
     return (
         <QueryClientProvider client={queryClient}>
             <WagmiProvider config={config}>

@@ -2,7 +2,6 @@
 
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import CachedOutlinedIcon from '@mui/icons-material/CachedOutlined';
-import { BarChart } from '@mui/x-charts/BarChart';
 import { ScatterChart } from '@mui/x-charts';
 
 export default function RiskAmountCorrelation() {

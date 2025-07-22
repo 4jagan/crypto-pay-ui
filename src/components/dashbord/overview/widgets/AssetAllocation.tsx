@@ -1,14 +1,19 @@
-import useDashboardData from '@/app/api/dashboard/DashboardApi';
+import getDashboardData from '@/app/api/dashboard/DashboardApi';
 import { PieChart } from '@mui/x-charts/PieChart';
 
 export default async function AssetAllocation() {
 
-    const data = await useDashboardData();
+    const data = await getDashboardData();
     if (!data) {
         return <div className="p-4 text-gray-500">Loading...</div>;
     }
 
     const assetAllocation = data.assetAllocation;
+
+    type AssetAllocationItem = {
+        label: string;
+        value: number;
+    };
 
     const settings = {
         height: 270,
@@ -20,7 +25,7 @@ export default async function AssetAllocation() {
     };
 
     const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-    const seriesData = assetAllocation.map((item: any, index: number) => ({
+    const seriesData = assetAllocation.map((item: AssetAllocationItem, index: number) => ({
         label: item.label,
         value: item.value,
         color: colors[index]

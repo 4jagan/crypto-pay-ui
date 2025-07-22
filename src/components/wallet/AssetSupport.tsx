@@ -1,7 +1,7 @@
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CachedOutlinedIcon from '@mui/icons-material/CachedOutlined';
 import { formatCurrency } from '@/utils/NumberUtils';
-import useDashboardData from '@/app/api/dashboard/DashboardApi';
+import getDashboardData from '@/app/api/dashboard/DashboardApi';
 import mockDashboardData from '@/app/api/dashboard/mockDashboardData';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import ReportProblemOutlinedIcon from '@mui/icons-material/ReportProblemOutlined';
@@ -11,7 +11,7 @@ interface PortfolioItem {
 }
 
 function AssetSupportCard({ item }: PortfolioItem) {
-  const { symbol, label, value, change, enabled } = item;
+  const { symbol, label, value, enabled } = item;
 
   return (
     <div className={`flex items-center justify-between p-4 border border-gray-200 bg-gray-50 rounded-lg`}>
@@ -36,7 +36,7 @@ function AssetSupportCard({ item }: PortfolioItem) {
 
 export default async function AssetSupport() {
 
-    const data = await useDashboardData();
+    const data = await getDashboardData();
     if (!data) {
         return <div className="p-4 text-gray-500">Loading...</div>;
     }

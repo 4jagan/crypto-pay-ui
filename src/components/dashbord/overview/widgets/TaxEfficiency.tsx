@@ -1,4 +1,4 @@
-import useDashboardData from '@/app/api/dashboard/DashboardApi';
+import getDashboardData from '@/app/api/dashboard/DashboardApi';
 import { formatCurrencyShort } from '@/utils/NumberUtils';
 import RequestQuoteOutlinedIcon from '@mui/icons-material/RequestQuoteOutlined';
 
@@ -7,7 +7,7 @@ interface TaxEfficiencyProps {
 }
 
 export default async function TaxEfficiency({ className = " space-y-2 w-72 " }: TaxEfficiencyProps) {
-    const data = await useDashboardData();
+    const data = await getDashboardData();
     
     if (!data) {
         return <div className="p-4 text-gray-500">Loading...</div>;

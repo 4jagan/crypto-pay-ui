@@ -1,4 +1,4 @@
-import useDashboardData from '@/app/api/dashboard/DashboardApi';
+import getDashboardData from '@/app/api/dashboard/DashboardApi';
 import { formatCurrencyShort } from '@/utils/NumberUtils';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 
@@ -7,7 +7,7 @@ interface CCFeeSavingProps {
 }
 
 export default async function CCFeeSaving({ className = " space-y-2 w-72 " }: CCFeeSavingProps) {
-    const data = await useDashboardData();
+    const data = await getDashboardData();
     
     if (!data) {
         return <div className="p-4 text-gray-500">Loading...</div>;

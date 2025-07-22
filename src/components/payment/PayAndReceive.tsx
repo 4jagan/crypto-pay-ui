@@ -1,9 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Pay from "./SendPayment";
-import SendPayment from "./SendPayment";
-import Receive from "./ReceivePayment";
 import ReceivePayment from "./ReceivePayment";
 import PayPayment from "./PayPayment";
 

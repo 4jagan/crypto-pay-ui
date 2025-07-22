@@ -1,6 +1,6 @@
-import useDashboardData from '@/app/api/dashboard/DashboardApi';
+import getDashboardData from '@/app/api/dashboard/DashboardApi';
 import getIconComponent from '@/components/icons/IconUtil';
-import { formatCurrency, formatCurrencyShort } from '@/utils/NumberUtils';
+import { formatCurrency } from '@/utils/NumberUtils';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { ReactNode } from 'react';
@@ -32,7 +32,7 @@ function AssetItem({ label, value, icon, disabled }: AssetItemProps) {
 }
 
 export default async function Assets() {
-    const data = await useDashboardData();
+    const data = await getDashboardData();
     
     if (!data) {
         return <div className="p-4 text-gray-500">Loading...</div>;

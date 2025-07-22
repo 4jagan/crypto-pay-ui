@@ -1,17 +1,17 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { formatUnits, parseUnits } from 'viem';
+import { parseUnits } from 'viem';
 import { useAccount, useWalletClient } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Contract } from 'ethers';
 import { USDC_ABI, USDC_CONTRACT_ADDRESS } from '@/utils/usdc';
 import { BrowserProvider } from 'ethers';
-import useDashboardData from '@/app/api/dashboard/DashboardApi';
-import { DashboardData, PaymentRecipient } from '@/app/api/dashboard/mockDashboardData';
+import getDashboardData from '@/app/api/dashboard/DashboardApi';
+import { PaymentRecipient } from '@/app/api/dashboard/mockDashboardData';
 
 export default function PayPayment() {
-  const { address, isConnected } = useAccount();
+  const { isConnected } = useAccount();
   const { data: walletClient } = useWalletClient();
 
   const [recipient, setRecipient] = useState('');
@@ -21,7 +21,7 @@ export default function PayPayment() {
 
     useEffect(() => {
         async function fetchData() {
-            const data = await useDashboardData();
+            const data = await getDashboardData();
             setRecipients(data.paymentRecipients);
             // setExchanges(data.paymentExchanges);
             // setAsset(data.assets[0].symbol); // Default to first asset
@@ -54,8 +54,12 @@ export default function PayPayment() {
         console.log("Transaction Receipt:", receipt);
 
         setTxHash(receipt.hash);
-    } catch (err: any) {
-      console.error('Transfer failed:', err.message || err);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error('Transfer failed:', err.message);
+      } else {
+        console.error('Transfer failed:', err);
+      }
     }
   };
 

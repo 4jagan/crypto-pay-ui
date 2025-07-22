@@ -2,7 +2,7 @@
 import CallReceivedOutlinedIcon from '@mui/icons-material/CallReceivedOutlined';
 import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
-import useDashboardData from '@/app/api/dashboard/DashboardApi';
+import getDashboardData from '@/app/api/dashboard/DashboardApi';
 import mockDashboardData from '@/app/api/dashboard/mockDashboardData';
 import { formatNumber } from '@/utils/NumberUtils';
 import { formatRelativeTime } from '@/utils/DateUtils';
@@ -42,7 +42,7 @@ export default function RecentTransactions({maxItems = 2}: {maxItems?: number}) 
 
     useEffect(() => {
         async function fetchData() {
-            const data = await useDashboardData();
+            const data = await getDashboardData();
             setData(data);
         }
         fetchData();

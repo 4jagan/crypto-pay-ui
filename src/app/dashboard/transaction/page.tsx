@@ -1,6 +1,5 @@
 import TransactionPatternAnalysis from "@/components/dashbord/overview/widgets/TransactionPatternAnalysis";
 import TransactionVolume from "@/components/dashbord/overview/widgets/TransactionVolume";
-import RiskAmountCorrelation from "@/components/dashbord/risk/widgets/RiskAmountCorrelation";
 import RecentTransactions from "@/components/dashbord/transaction/widgets/RecentTransactions";
 import SuccessRate from "@/components/dashbord/transaction/widgets/SuccessRate";
 import TransactionMetricItem from "@/components/dashbord/transaction/widgets/TransactionMetricItem";

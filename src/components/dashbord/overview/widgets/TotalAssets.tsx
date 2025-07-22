@@ -1,8 +1,8 @@
-import useDashboardData from "@/app/api/dashboard/DashboardApi";
+import getDashboardData from "@/app/api/dashboard/DashboardApi";
 
 export default async function TotalAssets() {
     
-    const data = await useDashboardData();
+    const data = await getDashboardData();
     
     if (!data) {
         return <div className="p-4 text-gray-500">Loading...</div>;

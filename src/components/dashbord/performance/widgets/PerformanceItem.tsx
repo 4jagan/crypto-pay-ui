@@ -7,7 +7,7 @@ interface PerformanceItemProps {
     className?: string;
 }
 
-export default function PerformanceItem({ title, subtitle, value, type, className }: PerformanceItemProps) {
+export default function PerformanceItem({ title, subtitle, value, type }: PerformanceItemProps) {
 
     const styles = [
         { type: "green", className: "bg-green-50 text-green-700 border-green-200" },

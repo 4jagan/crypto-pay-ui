@@ -1,7 +1,7 @@
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CachedOutlinedIcon from '@mui/icons-material/CachedOutlined';
 import { formatCurrency } from '@/utils/NumberUtils';
-import useDashboardData from '@/app/api/dashboard/DashboardApi';
+import getDashboardData from '@/app/api/dashboard/DashboardApi';
 import mockDashboardData from '@/app/api/dashboard/mockDashboardData';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
@@ -55,7 +55,7 @@ function PortfolioCard({ item }: PortfolioItem) {
 
 export default async function WalletPortfolio() {
 
-    const data = await useDashboardData();
+    const data = await getDashboardData();
     if (!data) {
         return <div className="p-4 text-gray-500">Loading...</div>;
     }

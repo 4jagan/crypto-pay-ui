@@ -1,9 +1,9 @@
-import useDashboardData from '@/app/api/dashboard/DashboardApi';
+import getDashboardData from '@/app/api/dashboard/DashboardApi';
 import { formatCurrencyShort } from '@/utils/NumberUtils';
 import MovingOutlinedIcon from '@mui/icons-material/MovingOutlined';
 
 export default async function TransactionVolume() {
-    const data = await useDashboardData();
+    const data = await getDashboardData();
     
     if (!data) {
         return <div className="p-4 text-gray-500">Loading...</div>;

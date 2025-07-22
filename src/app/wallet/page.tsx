@@ -1,7 +1,6 @@
-import TotalAssets from '@/components/dashbord/overview/widgets/TotalAssets';
 import WalletCard from '@/components/wallet/WalletCard';
 import CachedOutlinedIcon from '@mui/icons-material/CachedOutlined';
-import useDashboardData from '../api/dashboard/DashboardApi';
+import getDashboardData from '../api/dashboard/DashboardApi';
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
 import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
 import MovingOutlinedIcon from '@mui/icons-material/MovingOutlined';
@@ -12,7 +11,7 @@ import BlockChains from '@/components/wallet/BlockChains';
 
 
 export default async function WalletPage() {
-    const data = await useDashboardData();
+    const data = await getDashboardData();
     if (!data) {
         return <div className="p-4 text-gray-500">Loading...</div>;
     }
