@@ -3,8 +3,6 @@
 import PayAndReceive from "@/components/payment/PayAndReceive";
 import getDashboardData from "../api/dashboard/DashboardApi";
 import CachedOutlinedIcon from '@mui/icons-material/CachedOutlined';
-import RecentTransactions from "@/components/dashbord/overview/widgets/RecentTransactions";
-import ExchangeTransactions from "@/components/payment/ExchangeTransactions";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // RainbowKit/Wagmi imports
