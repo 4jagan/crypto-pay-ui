@@ -17,7 +17,7 @@ export default function Topbar() {
                 <AccountBalanceWalletOutlinedIcon className="text-white" />
                 </div>
                 {/* Title */}
-                <span className="font-bold text-lg text-gray-800">CryptoPay</span>
+                <span className="font-bold text-lg text-gray-800">BRACKT</span>
             </div>
             
             {/* Center Space */}
