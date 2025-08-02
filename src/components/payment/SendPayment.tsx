@@ -20,6 +20,7 @@ export default function SendPayment() {
     const [fromWalletAddress, setFromWalletAddress] = useState<string | null>(null);
     const [amount, setAmount] = useState<string>("");
     const [txHash, setTxHash] = useState<string | null>(null);
+    const [estimatedGas, setEstimatedGas] = useState<string | null>(null);
     
     useEffect(() => {
         async function fetchData() {
@@ -163,6 +164,10 @@ export default function SendPayment() {
                     </a>
                     </p>
                 )}
+            </div>
+
+            <div className="text-sm text-gray-600">
+                <p className="mb-2">Estimated Gas Cost: {estimatedGas ? `${estimatedGas} ETH` : "Not estimated yet"}</p>
             </div>
 
             <button className="bg-blue-500 text-white px-4 py-2 mt-12 rounded-lg " onClick={sendPayment}>Pay in USDC</button>

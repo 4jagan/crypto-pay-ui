@@ -3,6 +3,7 @@ import { useState } from "react";
 import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
 import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
 import { QRCodeSVG } from 'qrcode.react'; // Ensure you have qrcode.react installed
+import { USDC_CONTRACT_ADDRESS } from "@/utils/usdc";
 
 export default function ReceivePayment() {
 
@@ -16,8 +17,12 @@ export default function ReceivePayment() {
             alert("Please enter a valid amount and invoice ID.");
             return;
         }
-        const qrData = `asset=usdc&amount=${amount}&invoice=${invoiceId}`;
+        const merchantAddress = "0xabeb087eD74C53d406ebAECbe91C4439536549b1"; // Replace with actual merchant address
+        // const qrData = `ethereum:${USDC_CONTRACT_ADDRESS}/transfer?address=${merchantAddress}&uint256=${amount}`;
+        // setQrCode(qrData);
+        const qrData = `mode=qr-pay&asset=USDC&recipient=${merchantAddress}&recipientName=Café%20Lumina&amount=${amount}&invoice=${invoiceId}`;
         setQrCode(`${window.location.href}?qr=${encodeURIComponent(qrData)}`);
+
     };
 
     const resetQRCode = () => {
