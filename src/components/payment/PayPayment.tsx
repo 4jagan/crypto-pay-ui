@@ -133,13 +133,13 @@ export default function PayPayment() {
   };
 
   return (
-    <div className="flex flex-col gap-4 p-4 ">
-      <div className="p-4 flex justify-center items-center">
+    <div className="flex flex-col gap-4 px-4 py-2 ">
+      <div className="p-0 flex justify-center items-center">
         <ConnectButton />
       </div>
 
       {isConnected && mode === 'main' && (
-        <div className='flex flex-col gap-4 px-4 pt-6 border-t border-gray-200 bg-white'>
+        <div className='flex flex-col gap-4 p-4 border-t border-gray-200 bg-white'>
             <div className="mb-4">
                 <label className="text-sm text-gray-600">Recipient</label>
                 <select className="border border-gray-300 p-2 rounded w-full" value={recipient} onChange={(e) => setRecipient(e.target.value)}>
@@ -210,7 +210,7 @@ export default function PayPayment() {
             </div>
 
             <button
-              className={`${sending ? 'bg-blue-300' : 'bg-blue-500'} text-white px-6 py-3 mt-6 rounded-lg w-full text-lg active:scale-95 transition cursor-pointer min-h-12 min-w-32 focus:outline-blue-600 z-10`}
+              className={`${sending ? 'bg-blue-300' : 'bg-blue-500'} text-white px-6 py-3 mt-4 rounded-lg w-full text-lg active:scale-95 transition cursor-pointer min-h-12 min-w-32 focus:outline-blue-600 z-10`}
               onClick={() => sendPayment()}
             >
               {sending ? 'Processing Payment...' : 'Confirm and Pay'}

@@ -20,7 +20,9 @@ export default function ReceivePayment() {
         // const qrData = `ethereum:${USDC_CONTRACT_ADDRESS}/transfer?address=${merchantAddress}&uint256=${amount}`;
         // setQrCode(qrData);
         const qrData = `mode=qr-pay&asset=USDC&recipient=${merchantAddress}&recipientName=Café%20Lumina&amount=${amount}&invoice=${invoiceId}`;
-        setQrCode(`${window.location.href}?qr=${encodeURIComponent(qrData)}`);
+        // const url = window.location.hostname;
+        const url = 'https://crypto-pay-ui.vercel.app/pay';
+        setQrCode(`${url}?${qrData}`);
 
     };
 
@@ -58,6 +60,7 @@ export default function ReceivePayment() {
 
             <div className="flex flex-col gap-4 border border-gray-100 bg-gray-50 rounded-lg h-48">
                 {/* <label className="text-sm font-bold text-gray-600">Pay with QR Code</label> */}
+                {/* <div className="text-xs">{qrCode}</div> */}
                 <div className="flex items-center justify-center h-full">
                     {qrCode ? (
                         <QRCodeSVG value={qrCode} height={180} width={180} />

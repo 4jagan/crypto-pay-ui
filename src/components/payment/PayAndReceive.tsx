@@ -23,13 +23,13 @@ function PaymentModeToggle({ payMode, setPayMode }: PaymentModeToggleProps) {
 
 export default function PayAndReceive() {
     const [payMode, setPayMode] = useState<boolean>(true); // true for Pay, false for Receive
-
+    const mode = new URLSearchParams(window.location.search).get("mode") || 'main';
 
     return (
         <div className="flex flex-col gap-4 p-4 bg-white text-gray-700 rounded-lg">
             <div className="flex items-center justify-between">
                 <span className="text-lg font-bold">{payMode ? "Send" : "Receive"} Payment</span>
-                <PaymentModeToggle payMode={payMode} setPayMode={setPayMode} />
+                {mode === 'main' && <PaymentModeToggle payMode={payMode} setPayMode={setPayMode} />}
             </div>
             {/* {payMode ? <SendPayment /> : <ReceivePayment />} */}
             {payMode ? <PayPayment /> : <ReceivePayment />}

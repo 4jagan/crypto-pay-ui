@@ -2,7 +2,6 @@
 
 import PayAndReceive from "@/components/payment/PayAndReceive";
 import getDashboardData from "../api/dashboard/DashboardApi";
-import CachedOutlinedIcon from '@mui/icons-material/CachedOutlined';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // RainbowKit/Wagmi imports
@@ -44,14 +43,14 @@ export default function PayPage() {
                 <RainbowKitProvider>
                     <div className='flex flex-col gap-4'>
                         {/* Payments Header */}
-                        <div className="flex items-center justify-between mb-4 bg-white text-gray-700 -m-8 p-4">
+                        {/* <div className="flex items-center justify-between mb-4 bg-white text-gray-700 -m-8 p-4">
                             <div className="text-lg font-bold">Payments</div>
                             <div className="flex items-center gap-4">
                                 <button className="border border-gray-300 bg-gray-50 text-gray-700 px-4 py-1 rounded">
                                 <CachedOutlinedIcon />
                                 </button>
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* Payments Content */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
