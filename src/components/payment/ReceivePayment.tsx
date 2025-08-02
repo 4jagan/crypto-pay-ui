@@ -3,7 +3,6 @@ import { useState } from "react";
 import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
 import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
 import { QRCodeSVG } from 'qrcode.react'; // Ensure you have qrcode.react installed
-import { USDC_CONTRACT_ADDRESS } from "@/utils/usdc";
 
 export default function ReceivePayment() {
 

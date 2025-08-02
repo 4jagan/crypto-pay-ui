@@ -20,7 +20,7 @@ export default function SendPayment() {
     const [fromWalletAddress, setFromWalletAddress] = useState<string | null>(null);
     const [amount, setAmount] = useState<string>("");
     const [txHash, setTxHash] = useState<string | null>(null);
-    const [estimatedGas, setEstimatedGas] = useState<string | null>(null);
+    const [estimatedGas] = useState<string | null>(null);
     
     useEffect(() => {
         async function fetchData() {

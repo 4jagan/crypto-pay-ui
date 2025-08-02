@@ -189,7 +189,7 @@ export default function PayPayment() {
             </div>
           {!window.ethereum && (
             <div className="text-red-500 text-sm mt-2">
-              No wallet detected. Please open this page in a Web3-enabled browser, such as MetaMask Mobile's built-in browser.
+              No wallet detected. Please open this page in a Web3-enabled browser, such as MetaMask Mobile built-in browser.
             </div>
           )}
           {/* {(recipient === '' && !txHash) && (
