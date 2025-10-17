@@ -20,7 +20,7 @@ export default function ReceivePayment() {
         // const qrData = `ethereum:${USDC_CONTRACT_ADDRESS}/transfer?address=${merchantAddress}&uint256=${amount}`;
         // setQrCode(qrData);
         const qrData = `mode=qr-pay&asset=USDC&recipient=${merchantAddress}&recipientName=Café%20Lumina&amount=${amount}&invoice=${invoiceId}`;
-        // const url = window.location.hostname;
+        // const url = window.location.href.split('?')[0]; // Get the base URL without query params
         const url = 'https://crypto-pay-ui.vercel.app/pay';
         setQrCode(`${url}?${qrData}`);
 
